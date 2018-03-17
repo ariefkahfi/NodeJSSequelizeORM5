@@ -33,11 +33,17 @@ async function removeUserFromProject(user_id,project_id){
     getProject.removeUser(getUser);
 }
 
-removeUserFromProject("U005",2).then(()=>{
-    console.log("remove user from project done ");
-},(err)=>{
+dbModel.syncAllTables(true).then(val=>{
+    console.log(val);
+}).catch(err=>{
     console.error(err);
 })
+
+// removeUserFromProject("U005",2).then(()=>{
+//     console.log("remove user from project done ");
+// },(err)=>{
+//     console.error(err);
+// })
 
 // addProjectToUser("U005",).then(()=>{
 //     console.log("ADD PROJECT TO USER DONE")

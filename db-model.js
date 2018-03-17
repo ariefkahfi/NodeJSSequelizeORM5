@@ -14,11 +14,11 @@ class DatabaseModel {
     }
     doRelation(){
         this.User.belongsToMany(this.Project,{
-            through:"user_project",
+            through:this.UserProject,
             foreignKey:"user_id"
         });
         this.Project.belongsToMany(this.User,{
-            through:"user_project",
+            through:this.UserProject,
             foreignKey:"project_id"
         });
     }
@@ -54,6 +54,14 @@ class DatabaseModel {
             timestamps:false,
             tableName:"project"
         });
+
+        this.UserProject = sequelize.define("user_project",{
+            
+        },{
+            timestamps:false,
+            tableName:"user_project"
+        });
+
     }
 }
 
